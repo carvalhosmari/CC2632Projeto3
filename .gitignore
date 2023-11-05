@@ -50,3 +50,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Folders
+cmake-build-*/
+.idea/
+
+# Text files
+*.txt
