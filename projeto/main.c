@@ -3,7 +3,7 @@
 #include "lib.h"
 
 int main() {
-    int input, cod;
+    int input, cod, input2;
     ListaTarefas lista;
 
     cod = carregaTarefas(&lista, "arquivo");
@@ -36,13 +36,34 @@ int main() {
 
             system("pause");
         } else if (input == 2) {
-            cod = listaTarefas(&lista);
+            do {
+                imprimeMenuListar();
 
-            if (cod == 1) {
-                printf("Lista de tarefas vazia!\n\n");
-            }
+                scanf("%d", &input2);
 
-            system("pause");
+                if (input2 == 0) {
+                    //encerra o loop
+                    break;
+                } else if (input2 == 1) {
+                    cod = listaTarefas(&lista);
+                } else if (input2 == 2) {
+                    //lista por prioridade
+                } else if (input2 == 3) {
+                    //lista por status
+                } else if (input2 == 4) {
+                    //lista por categ
+                } else if (input2 == 5) {
+                    //lista por prioridade e categ
+                } else {
+                    printf("\nOpcao invalida!\n\n");
+                }
+
+                if (cod == 1) {
+                    printf("Lista de tarefas vazia!\n\n");
+                }
+
+                system("pause");
+            } while (input2 != 0);
         } else if (input == 3) {
             cod = deletaTarefa(&lista);
 
@@ -58,7 +79,34 @@ int main() {
         } else if (input == 4) {
             //editar tarefa
         } else if (input == 5) {
-            //exportar tarefas
+            do {
+                imprimeMenuExportar();
+
+                scanf("%d", &input2);
+
+                if (input2 == 0) {
+                    //encerra o loop
+                    break;
+                } else if (input2 == 1) {
+                    //exportar todas as tarefas
+                } else if (input2 == 2) {
+                    //exportar por prioridade
+                } else if (input2 == 3) {
+                    //exportar por status
+                } else if (input2 == 4) {
+                    //exportar por categ
+                } else if (input2 == 5) {
+                    //exportar por prioridade e categ
+                } else {
+                    printf("\nOpcao invalida!\n\n");
+                }
+
+                if (cod == 1) {
+                    printf("Lista de tarefas vazia!\n\n");
+                }
+
+                system("pause");
+            } while (input2 != 0);
         } else {
             printf("\nOpcao invalida!\n\n");
         }
