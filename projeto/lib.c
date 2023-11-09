@@ -40,6 +40,8 @@ int criaTarefa(ListaTarefas *lt) {
     strcpy(t->descricao, desc);
     printf("\n");
 
+    t->status = 1;
+
     lt->qtd++;
 
     return 0;
@@ -66,8 +68,18 @@ int listaTarefas(ListaTarefas *lt) {
     }
 
     for (int i = 0; i < lt->qtd; i++) {
+        char *status;
+
+        if (lt->tarefas[i].status == 1) {
+            status = "nao iniciada";
+        } else if (lt->tarefas[i].status == 2) {
+            status = "em andamento";
+        } else {
+            status = "completa";
+        }
+
         printf("Tarefa [%d]:\n", (i + 1));
-        printf("\tprioridade: %d\n\tcategoria: %s\n\tdescricao: %s\n\n", lt->tarefas[i].prioridade, lt->tarefas[i].categoria, lt->tarefas[i].descricao);
+        printf("\tprioridade: %d\n\tcategoria: %s\n\tdescricao: %s\n\tstatus: %s\n\n", lt->tarefas[i].prioridade, lt->tarefas[i].categoria, lt->tarefas[i].descricao, status);
     }
 
     return 0;
