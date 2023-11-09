@@ -55,6 +55,12 @@ int main() {
             }
 
             system("pause");
+        } else if (input == 4) {
+            //editar tarefa
+        } else if (input == 5) {
+            //exportar tarefas
+        } else {
+            printf("\nOpcao invalida!\n\n");
         }
     } while (input != 0);
 

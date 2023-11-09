@@ -14,8 +14,10 @@ void imprimeMenu() {
     printf("O que voce gostaria de fazer?\n");
     printf("\n");
     printf("\t1 - cadastrar nova tarefa;\n");
-    printf("\t2 - listar todas as tarefas;\n");
+    printf("\t2 - listar tarefas;\n");
     printf("\t3 - deletar tarefa;\n");
+    printf("\t4 - editar tarefa;\n");
+    printf("\t5 - exportar tarefas;\n");
     printf("\t0 - sair da aplicacao.\n\n");
     printf("digite sua opcao: ");
 }
