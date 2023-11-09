@@ -14,6 +14,8 @@ typedef struct {
     int qtd;
 } ListaTarefas;
 void imprimeMenu();
+void imprimeMenuListar();
+void imprimeMenuExportar();
 int criaTarefa(ListaTarefas *lt);
 int cadastraTarefa(ListaTarefas *lt, char *arquivo);
 int deletaTarefa(ListaTarefas *lt);

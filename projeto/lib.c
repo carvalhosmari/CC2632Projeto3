@@ -115,4 +115,31 @@ int carregaTarefas(ListaTarefas *lt, char *arquivo) {
     return 0;
 }
 
+void imprimeMenuListar() {
+
+    printf("O que voce gostaria de fazer?\n");
+    printf("\n");
+    printf("\t1 - listar todas as tarefas;\n");
+    printf("\t2 - listar tarefas por prioridade;\n");
+    printf("\t3 - listar tarefas por status;\n");
+    printf("\t4 - listar tarefas por categoria;\n");
+    printf("\t5 - listar tarefas por prioridade e categoria;\n");
+    printf("\t0 - voltar.\n\n");
+    printf("digite sua opcao: ");
+
+}
+
+void imprimeMenuExportar() {
+
+    printf("O que voce gostaria de fazer?\n");
+    printf("\n");
+    printf("\t1 - exportar todas as tarefas;\n");
+    printf("\t2 - exportar tarefas por prioridade;\n");
+    printf("\t3 - exportar tarefas por status;\n");
+    printf("\t4 - exportar tarefas por categoria;\n");
+    printf("\t5 - exportar tarefas por prioridade e categoria;\n");
+    printf("\t0 - voltar.\n\n");
+    printf("digite sua opcao: ");
+
+}
 
