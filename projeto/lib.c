@@ -191,7 +191,7 @@ int editaTarefa(ListaTarefas *lt) {
 
             strcpy(lt->tarefas[indiceReal].categoria, categ);
         } else if (input == 3) {
-            char desc[100];
+            char desc[300];
 
             printf("digite a nova descricao: ");
 
