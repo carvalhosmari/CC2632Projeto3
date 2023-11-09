@@ -155,3 +155,61 @@ void imprimeMenuExportar() {
 
 }
 
+int editaTarefa(ListaTarefas *lt) {
+
+    int indice, indiceReal, input;
+
+    if (lt->qtd == 0) {
+        return 1;
+    } else {
+        printf("Digite o numero da tarefa que voce gostaria de editar: ");
+        scanf("%d", &indice);
+
+        indiceReal = indice - 1;
+
+        if (indice > lt->qtd || indice <= 0) {
+            return -1;
+        }
+
+        printf("digite o campo que deseja editar:\n\t1 - prioridade;\n\t2 - categoria;\n\t3 - descricao;\n\t4 - status.\n\ndigite sua opcao: ");
+
+        scanf("%d", &input);
+
+        if (input == 1) {
+            printf("digite a nova prioridade: ");
+
+            scanf("%d", &input);
+
+            lt->tarefas[indiceReal].prioridade = input;
+        } else if (input == 2) {
+            char categ[100];
+
+            printf("digite a nova categoria: ");
+
+            fgetc(stdin); //limpa o buffer do teclado
+            scanf("%[^\n]", categ);
+
+            strcpy(lt->tarefas[indiceReal].categoria, categ);
+        } else if (input == 3) {
+            char desc[100];
+
+            printf("digite a nova descricao: ");
+
+            fgetc(stdin); //limpa o buffer do teclado
+            scanf("%[^\n]", desc);
+
+            strcpy(lt->tarefas[indiceReal].descricao, desc);
+        } else if (input == 4) {
+            printf("digite o novo status:\n\t1 - nao iniciada;\n\t2 - em andamento\n\t3 - completa.\n\ndigite sua opcao: ");
+
+            scanf("%d", &input);
+
+            lt->tarefas[indiceReal].status = input;
+        }
+
+        cadastraTarefa(lt, "arquivo");
+
+        return 0;
+    }
+}
+
