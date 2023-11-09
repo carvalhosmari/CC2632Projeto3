@@ -4,10 +4,16 @@
 
 #ifndef PROJETO_LIB_H
 #define PROJETO_LIB_H
+typedef enum {
+    naoIniciada = 1,
+    emAndamento,
+    completa
+} StatusTarefa;
 typedef struct {
     int prioridade;
     char categoria[100];
     char descricao[300];
+    StatusTarefa status;
 } Tarefa;
 typedef struct {
     Tarefa tarefas[100];
