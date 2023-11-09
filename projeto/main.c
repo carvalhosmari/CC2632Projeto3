@@ -77,7 +77,15 @@ int main() {
 
             system("pause");
         } else if (input == 4) {
-            //editar tarefa
+            cod = editaTarefa(&lista);
+
+            if (cod == 0) {
+                printf("\nTarefa editada com sucesso!\n\n");
+            } else if (cod == -1) {
+                printf("\nTarefa nao encontrada!\n\n");
+            } else if (cod == 1) {
+                printf("\nLista de tarefas vazia!\n\n");
+            }
         } else if (input == 5) {
             do {
                 imprimeMenuExportar();
