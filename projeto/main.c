@@ -47,7 +47,7 @@ int main() {
                 } else if (input2 == 1) {
                     cod = listaTarefas(&lista);
                 } else if (input2 == 2) {
-                    //lista por prioridade
+                    cod = listaTarefasPorPrioridade(&lista);
                 } else if (input2 == 3) {
                     //lista por status
                 } else if (input2 == 4) {

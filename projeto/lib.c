@@ -213,3 +213,41 @@ int editaTarefa(ListaTarefas *lt) {
     }
 }
 
+int listaTarefasPorPrioridade(ListaTarefas *lt) {
+    int input;
+    int cont = 0;
+
+    if (lt->qtd != 0) {
+        printf("digite a prioridade: ");
+        scanf("%d", &input);
+
+        for (int i = 0; i < lt->qtd; i++) {
+            char *status;
+
+            if (input == lt->tarefas[i].prioridade) {
+                if (lt->tarefas[i].status == 1) {
+                    status = "nao iniciada";
+                } else if (lt->tarefas[i].status == 2) {
+                    status = "em andamento";
+                } else {
+                    status = "completa";
+                }
+
+                printf("Tarefa [%d]:\n", (i + 1));
+                printf("\tprioridade: %d\n\tcategoria: %s\n\tdescricao: %s\n\tstatus: %s\n\n", lt->tarefas[i].prioridade,
+                       lt->tarefas[i].categoria, lt->tarefas[i].descricao, status);
+
+                cont++;
+            }
+        }
+
+        if (cont == 0) {
+            return 1;
+        }
+
+        return 0;
+
+    } else {
+        return 1;
+    }
+}
