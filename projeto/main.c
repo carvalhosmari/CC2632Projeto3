@@ -4,7 +4,7 @@
 
 int main() {
     int input, cod, input2;
-    ListaTarefas lista;
+    ListaTarefas lista, listaProv;
 
     cod = carregaTarefas(&lista, "arquivo");
 
@@ -47,13 +47,17 @@ int main() {
                 } else if (input2 == 1) {
                     cod = listaTarefas(&lista);
                 } else if (input2 == 2) {
-                    cod = listaTarefasPorPrioridade(&lista);
+                    cod = filtraTarefas(&lista, &listaProv, 1);
+                    cod = listaTarefas(&listaProv);
                 } else if (input2 == 3) {
-                    //lista por status
+                    cod = filtraTarefas(&lista, &listaProv, 2);
+                    cod = listaTarefas(&listaProv);
                 } else if (input2 == 4) {
-                    //lista por categ
+                    cod = filtraTarefas(&lista, &listaProv, 3);
+                    cod = listaTarefas(&listaProv);
                 } else if (input2 == 5) {
-                    //lista por prioridade e categ
+                    cod = filtraTarefas(&lista, &listaProv, 4);
+                    cod = listaTarefas(&listaProv);
                 } else {
                     printf("\nOpcao invalida!\n\n");
                 }
