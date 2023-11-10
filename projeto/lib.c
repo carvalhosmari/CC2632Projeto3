@@ -213,41 +213,67 @@ int editaTarefa(ListaTarefas *lt) {
     }
 }
 
-int listaTarefasPorPrioridade(ListaTarefas *lt) {
+int filtraTarefas(ListaTarefas *lt, ListaTarefas *ltProvisoria, int tipoFiltro) {
     int input;
-    int cont = 0;
+    ltProvisoria->qtd = 0;
 
-    if (lt->qtd != 0) {
+    if (tipoFiltro == 1) {
         printf("digite a prioridade: ");
         scanf("%d", &input);
 
         for (int i = 0; i < lt->qtd; i++) {
-            char *status;
-
             if (input == lt->tarefas[i].prioridade) {
-                if (lt->tarefas[i].status == 1) {
-                    status = "nao iniciada";
-                } else if (lt->tarefas[i].status == 2) {
-                    status = "em andamento";
-                } else {
-                    status = "completa";
-                }
+                ltProvisoria->tarefas[ltProvisoria->qtd] = lt->tarefas[i];
+                ltProvisoria->qtd++;
+            }
+        }
+    } else if (tipoFiltro == 2) {
+        printf("digite o status:\n\t1 - nao iniciada;\n\t2 - em andamento;\n\t3 - completa.\ndigite a opcao desejada: ");
+        scanf("%d", &input);
 
-                printf("Tarefa [%d]:\n", (i + 1));
-                printf("\tprioridade: %d\n\tcategoria: %s\n\tdescricao: %s\n\tstatus: %s\n\n", lt->tarefas[i].prioridade,
-                       lt->tarefas[i].categoria, lt->tarefas[i].descricao, status);
+        for (int i = 0; i < lt->qtd; i++) {
+            if (input == lt->tarefas[i].status) {
+                ltProvisoria->tarefas[ltProvisoria->qtd] = lt->tarefas[i];
+                ltProvisoria->qtd++;
+            }
+        }
+    } else if (tipoFiltro == 3) {
+        char categ[100];
 
-                cont++;
+        printf("digite a categoria: ");
+        fgetc(stdin);
+        scanf("%[^\n]", categ);
+
+        for (int i = 0; i < lt->qtd; i++) {
+            if (strcasecmp(categ, lt->tarefas[i].categoria) == 0) {
+                ltProvisoria->tarefas[ltProvisoria->qtd] = lt->tarefas[i];
+                ltProvisoria->qtd++;
             }
         }
 
-        if (cont == 0) {
-            return 1;
-        }
-
-        return 0;
 
     } else {
+        char categ[100];
+
+        printf("digite a prioridade: ");
+        scanf("%d", &input);
+
+        printf("digite a categoria: ");
+        fgetc(stdin);
+        scanf("%[^\n]", categ);
+
+        for (int i = 0; i < lt->qtd; i++) {
+            if (strcasecmp(categ, lt->tarefas[i].categoria) == 0 && input == lt->tarefas[i].prioridade) {
+                ltProvisoria->tarefas[ltProvisoria->qtd] = lt->tarefas[i];
+                ltProvisoria->qtd++;
+            }
+        }
+    }
+
+    if (ltProvisoria->qtd == 0) {
         return 1;
     }
+
+    return 0;
 }
+

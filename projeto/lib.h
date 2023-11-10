@@ -28,5 +28,5 @@ int deletaTarefa(ListaTarefas *lt);
 int listaTarefas(ListaTarefas *lt);
 int carregaTarefas(ListaTarefas *lt, char *arquivo);
 int editaTarefa(ListaTarefas *lt);
-int listaTarefasPorPrioridade(ListaTarefas *lt);
+int filtraTarefas(ListaTarefas *lt, ListaTarefas *ltProvisoria, int tipoFiltro);
 #endif //PROJETO_LIB_H
