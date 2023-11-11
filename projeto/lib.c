@@ -5,6 +5,7 @@
 #include "lib.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 void imprimeMenu() {
     printf("********************************************\n");
@@ -308,7 +309,7 @@ int exportaTarefas(ListaTarefas *lt, int tipoFiltro) {
                 status = "completa";
             }
 
-            fprintf(f, "Tarefa [%d]:\tprioridade: %d \tcategoria: %s\tstatus: %s\tdescricao: %s\n", i, lt->tarefas[i].prioridade, lt->tarefas[i].categoria, status, lt->tarefas[i].descricao);
+            fprintf(f, "Tarefa [%d]:\tprioridade: %d \tcategoria: %s\tstatus: %s\tdescricao: %s\n", (i + 1), lt->tarefas[i].prioridade, lt->tarefas[i].categoria, status, lt->tarefas[i].descricao);
         }
 
         fclose(f);
@@ -317,4 +318,16 @@ int exportaTarefas(ListaTarefas *lt, int tipoFiltro) {
     } else {
         return 1;
     }
+}
+
+int comparaInteiros(const void* a, const void* b) {
+    const int x = ((const Tarefa *)a)->prioridade;
+    const int y = ((const Tarefa *)b)->prioridade;
+
+    if(y > x)
+        return 1;
+    else if(y < x)
+        return -1;
+    else
+        return 0;
 }

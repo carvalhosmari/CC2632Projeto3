@@ -54,9 +54,11 @@ int main() {
                     cod = listaTarefas(&listaProv);
                 } else if (input2 == 4) {
                     cod = filtraTarefas(&lista, &listaProv, 3);
+                    qsort(listaProv.tarefas, listaProv.qtd, sizeof(Tarefa), comparaInteiros);
                     cod = listaTarefas(&listaProv);
                 } else if (input2 == 5) {
                     cod = filtraTarefas(&lista, &listaProv, 4);
+                    qsort(listaProv.tarefas, listaProv.qtd, sizeof(Tarefa), comparaInteiros);
                     cod = listaTarefas(&listaProv);
                 } else {
                     printf("\nOpcao invalida!\n\n");
@@ -109,9 +111,11 @@ int main() {
                     cod = exportaTarefas(&listaProv, 2);
                 } else if (input2 == 4) {
                     cod = filtraTarefas(&lista, &listaProv, 3);
+                    qsort(listaProv.tarefas, listaProv.qtd, sizeof(Tarefa), comparaInteiros);
                     cod = exportaTarefas(&listaProv, 3);
                 } else if (input2 == 5) {
                     cod = filtraTarefas(&lista, &listaProv, 4);
+                    qsort(listaProv.tarefas, listaProv.qtd, sizeof(Tarefa), comparaInteiros);
                     cod = exportaTarefas(&listaProv, 4);
                 } else {
                     printf("\nOpcao invalida!\n\n");

@@ -30,4 +30,5 @@ int carregaTarefas(ListaTarefas *lt, char *arquivo);
 int editaTarefa(ListaTarefas *lt);
 int filtraTarefas(ListaTarefas *lt, ListaTarefas *ltProvisoria, int tipoFiltro);
 int exportaTarefas(ListaTarefas *lt, int tipoFiltro);
+int comparaInteiros(const void* a, const void* b);
 #endif //PROJETO_LIB_H
