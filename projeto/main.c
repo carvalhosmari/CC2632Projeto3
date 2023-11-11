@@ -100,21 +100,27 @@ int main() {
                     //encerra o loop
                     break;
                 } else if (input2 == 1) {
-                    //exportar todas as tarefas
+                    cod = exportaTarefas(&lista, 0);
                 } else if (input2 == 2) {
-                    //exportar por prioridade
+                    cod = filtraTarefas(&lista, &listaProv, 1);
+                    cod = exportaTarefas(&listaProv, 1);
                 } else if (input2 == 3) {
-                    //exportar por status
+                    cod = filtraTarefas(&lista, &listaProv, 2);
+                    cod = exportaTarefas(&listaProv, 2);
                 } else if (input2 == 4) {
-                    //exportar por categ
+                    cod = filtraTarefas(&lista, &listaProv, 3);
+                    cod = exportaTarefas(&listaProv, 3);
                 } else if (input2 == 5) {
-                    //exportar por prioridade e categ
+                    cod = filtraTarefas(&lista, &listaProv, 4);
+                    cod = exportaTarefas(&listaProv, 4);
                 } else {
                     printf("\nOpcao invalida!\n\n");
                 }
 
                 if (cod == 1) {
                     printf("Lista de tarefas vazia!\n\n");
+                } else {
+                    printf("Arquivo txt gerado com sucesso!\n\n");
                 }
 
                 system("pause");

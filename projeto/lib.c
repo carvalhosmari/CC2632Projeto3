@@ -277,3 +277,44 @@ int filtraTarefas(ListaTarefas *lt, ListaTarefas *ltProvisoria, int tipoFiltro) 
     return 0;
 }
 
+int exportaTarefas(ListaTarefas *lt, int tipoFiltro) {
+    char *tipo, *status;
+
+    if (lt->qtd != 0) {
+        if (tipoFiltro == 1) {
+            tipo = "prioridade";
+        } else if (tipoFiltro == 2) {
+            tipo = "status";
+        } else if (tipoFiltro == 3) {
+            tipo = "categoria";
+        } else if (tipoFiltro == 4) {
+            tipo = "prioridade e categoria";
+        } else {
+            tipo = "todas as tarefas";
+        }
+
+        FILE *f = fopen("exportTarefas.txt", "w");
+
+        fprintf(f,"LISTA DE TAREFAS\n");
+        fprintf(f,"filtrado por: \t%s\n", tipo);
+        fprintf(f, "--------------------------------------------------------\n");
+
+        for (int i = 0; i < lt->qtd; i++) {
+            if (lt->tarefas[i].status == 1) {
+                status = "nao iniciada";
+            } else if (lt->tarefas[i].status == 2) {
+                status = "em andamento";
+            } else {
+                status = "completa";
+            }
+
+            fprintf(f, "Tarefa [%d]:\tprioridade: %d \tcategoria: %s\tstatus: %s\tdescricao: %s\n", i, lt->tarefas[i].prioridade, lt->tarefas[i].categoria, status, lt->tarefas[i].descricao);
+        }
+
+        fclose(f);
+
+        return 0;
+    } else {
+        return 1;
+    }
+}
