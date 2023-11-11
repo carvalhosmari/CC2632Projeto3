@@ -29,4 +29,5 @@ int listaTarefas(ListaTarefas *lt);
 int carregaTarefas(ListaTarefas *lt, char *arquivo);
 int editaTarefa(ListaTarefas *lt);
 int filtraTarefas(ListaTarefas *lt, ListaTarefas *ltProvisoria, int tipoFiltro);
+int exportaTarefas(ListaTarefas *lt, int tipoFiltro);
 #endif //PROJETO_LIB_H
