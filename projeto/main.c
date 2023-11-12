@@ -28,17 +28,17 @@ int main() {
 
             if (cod != 0) {
                 // Caso retorne algo diferente de 0, indica insucesso na operacao
-                printf("Nao foi possivel cadastrar a tarefa!\n\n");
+                printf("\nNao foi possivel cadastrar a tarefa!\n\n");
             } else {
                 // Cadastra uma nova tarefa na lista.
                 cod = cadastraTarefa(&lista, "arquivo");
 
                 if (cod == 0) {
                     // Caso retorne 0, indica sucesso na operacao
-                    printf("Tarefa cadastrada com sucesso!\n\n");
+                    printf("\nTarefa cadastrada com sucesso!\n\n");
                 } else {
                     // Indica um possivel erro na abertura do arquivo
-                    printf("Erro ao abrir arquivo de destino!\n\n");
+                    printf("\nErro ao abrir arquivo de destino!\n\n");
                 }
             }
 
@@ -68,6 +68,7 @@ int main() {
                     // Lista de tarefas filtradas por categoria e ordenada da maior prioridade para a menor
                     cod = filtraTarefas(&lista, &listaProv, 3);
                     qsort(listaProv.tarefas, listaProv.qtd, sizeof(Tarefa), comparaInteiros);
+                    printf("\n[Tarefas ordenadas da maior prioridade para a menor]\n");
                     cod = listaTarefas(&listaProv);
                 } else if (input2 == 5) {
                     // Lista de tarefas filtradas por categoria e prioridade
@@ -79,7 +80,7 @@ int main() {
 
                 if (cod == 1) {
                     // Caso retorne 1, indica que a lista de tarefas esta vazia
-                    printf("Lista de tarefas vazia!\n\n");
+                    printf("\nLista de tarefas vazia!\n\n");
                 }
 
                 system("pause");
@@ -90,13 +91,13 @@ int main() {
 
             if (cod == 0) {
                 // Caso retorne 0, indica sucesso
-                printf("Tarefa deletada com sucesso!\n\n");
+                printf("\nTarefa deletada com sucesso!\n\n");
             } else if (cod == 1) {
                 // Caso retorne 1, indica que a lista de tarefas esta vazia
-                printf("Lista de tarefas vazia!\n\n");
+                printf("\nLista de tarefas vazia!\n\n");
             } else {
                 // Caso contrario, indica que nao ha tarefa com o indice fornecido pelo usuario
-                printf("Tarefa nao encontrada!\n\n");
+                printf("\nTarefa nao encontrada!\n\n");
             }
 
             system("pause");
@@ -114,6 +115,8 @@ int main() {
                 // Caso retorne 1, indica que a lista de tarefas esta vazia
                 printf("\nLista de tarefas vazia!\n\n");
             }
+
+            system("pause");
         } else if (input == 5) {
             do {
                 // Exibe o menu de exportar tarefas.
@@ -150,10 +153,10 @@ int main() {
 
                 if (cod == 1) {
                     // Caso retorne 1, indica que a lista de tarefas esta vazia
-                    printf("Lista de tarefas vazia!\n\n");
+                    printf("\nLista de tarefas vazia!\n\n");
                 } else {
                     // Caso contrario, indica sucesso
-                    printf("Arquivo txt gerado com sucesso!\n\n");
+                    printf("\nArquivo txt gerado com sucesso!\n\n");
                 }
 
                 system("pause");

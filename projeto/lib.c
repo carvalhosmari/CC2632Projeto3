@@ -29,19 +29,18 @@ int criaTarefa(ListaTarefas *lt) {
     Tarefa *t = &lt->tarefas[lt->qtd];
 
     // Solicita informações sobre a nova tarefa ao usuário
-    printf("Digite a prioridade da tarefa (0 a 10): ");
+    printf("prioridade da tarefa (0 a 10): ");
     scanf("%d", &t->prioridade);
 
-    printf("Digite a categoria a qual esta tarefa pertence: ");
+    printf("categoria a qual esta tarefa pertence: ");
     fgetc(stdin); //limpa o buffer do teclado
     scanf("%[^\n]", categ);
     strcpy(t->categoria, categ);
 
-    printf("Digite uma breve descricao desta tarefa: ");
     fgetc(stdin); //limpa o buffer do teclado
+    printf("breve descricao desta tarefa: ");
     scanf("%[^\n]", desc);
     strcpy(t->descricao, desc);
-    printf("\n");
 
     // Define o status inicial como 1 (não iniciada)
     t->status = 1;
@@ -291,8 +290,6 @@ int filtraTarefas(ListaTarefas *lt, ListaTarefas *ltProvisoria, int tipoFiltro) 
                 ltProvisoria->qtd++;
             }
         }
-
-
     } else {
         // Filtra por prioridade e categoria
         char categ[100];
@@ -334,7 +331,7 @@ int exportaTarefas(ListaTarefas *lt, int tipoFiltro) {
         } else if (tipoFiltro == 2) {
             tipo = "status";
         } else if (tipoFiltro == 3) {
-            tipo = "categoria";
+            tipo = "categoria [ordenadas da maior prioridade para a menor]";
         } else if (tipoFiltro == 4) {
             tipo = "prioridade e categoria";
         } else {
@@ -360,7 +357,7 @@ int exportaTarefas(ListaTarefas *lt, int tipoFiltro) {
             }
 
             // Escreve informações sobre a tarefa no arquivo
-            fprintf(f, "Tarefa [%d]:\tprioridade: %d \tcategoria: %s\tstatus: %s\tdescricao: %s\n", (i + 1), lt->tarefas[i].prioridade, lt->tarefas[i].categoria, status, lt->tarefas[i].descricao);
+            fprintf(f, "Tarefa [%d]\tprioridade: %d \tcategoria: %s\tstatus: %s\tdescricao: %s\n", (i + 1), lt->tarefas[i].prioridade, lt->tarefas[i].categoria, status, lt->tarefas[i].descricao);
         }
 
         // Fecha o arquivo
